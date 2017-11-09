@@ -1,0 +1,17 @@
+1、ImplArrayList 实现 ArrayList包括：
+       add()
+       remove()
+       get()
+       contains()
+       indexOf()
+       isEmpty()
+    
+ 2、ImplLinkedList - > LinkedList
+
+        get()
+	add()
+	addFirst()
+	addLast()
+
+
+    #####未完待续#########

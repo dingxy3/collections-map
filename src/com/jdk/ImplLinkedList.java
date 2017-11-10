@@ -101,9 +101,9 @@ public class ImplLinkedList<E> {
 	            last = newNode;
 	        else
 	        	f.prev = newNode ;
-	            // first.prev = newNode;
+	            // first.prev = newNode;//error
 	        	// f = newNode.next ;//error
-	           //  newNode.next = f;//error
+	            //  newNode.next = f;//error
 	        size++;
 	}
 	private void rangeCheck(int index){
@@ -129,6 +129,47 @@ public class ImplLinkedList<E> {
 
 		}
 		return false;
+	}
+
+	public boolean remove(Object o){
+		if (null ==  o){
+          for (Node<E> x = first ; x != null ; x= x.next){
+          	if (x.e == null){
+				link(x);
+			}
+		  }
+		}else {
+			for (Node<E> x = first ; x != null ; x= x.next){
+				if (o.equals(x.e)){
+					link(x);
+				}
+			}
+
+			size -- ;
+		}
+	   return  false ;
+	}
+	private  void link(Node<E> x){
+		//prev -> x - > next 结构
+		Node<E> prev = x.prev ;
+		Node<E>  next = x.next ;
+		//如果x.prev为空说明为head指针，只要将头指针移到下一个节点
+		if (x.prev == null){
+			first = next;
+
+		}else {
+			//如果不为空，将前一个指针的next指向下个节点，并将当前指针的prev 置为空
+			prev.next = next ;
+			x.prev = null ;
+		}
+		if (x.next ==null){
+			last = prev ;
+		}else {
+			//如果不为空，将后一个节点（next）的prev指向上一个节点（prev），并将当前指针的next置为空
+			next.prev = prev ;
+			x.next = null ;
+		}
+		x.e = null ;
 	}
 	
 	public static void main(String[] args){

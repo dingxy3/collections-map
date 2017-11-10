@@ -9,9 +9,10 @@
  2、ImplLinkedList - > LinkedList
 
         get()
-	add()
-	addFirst()
-	addLast()
+	    add()
+	   addFirst()
+	   addLast()
+	   remove()
 
 
     #####未完待续#########

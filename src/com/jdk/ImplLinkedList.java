@@ -112,6 +112,7 @@ public class ImplLinkedList<E> {
 		}
 	}
 
+	//check ImplLinkedList contains O ？
 	public  boolean contains(Object o) {
 		if (null == o) {
 			for (Node<E> e = first; e != null; e = e.next) {

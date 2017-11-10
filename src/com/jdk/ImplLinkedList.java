@@ -23,6 +23,8 @@ public class ImplLinkedList<E> {
 	private Node<E> first;
 	
 	private Node<E> last ;
+
+	public ImplLinkedList(){}
 	
 	public void add(E e){
 	
@@ -108,6 +110,24 @@ public class ImplLinkedList<E> {
 		if(index > size-1 || index < 0){
 			throw new IndexOutOfBoundsException("越界");
 		}
+	}
+
+	public  boolean contains(Object o) {
+		if (null == o) {
+			for (Node<E> e = first; e != null; e = e.next) {
+				if (e.e == null) {
+					return true;
+				}
+			}
+		} else {
+			for (Node<E> e = first; e != null; e = e.next) {
+				if (o.equals(e.e)) {
+					return true;
+				}
+			}
+
+		}
+		return false;
 	}
 	
 	public static void main(String[] args){

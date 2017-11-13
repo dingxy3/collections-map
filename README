@@ -10,9 +10,9 @@
 
         get()
 	    add()
-	   addFirst()
-	   addLast()
-	   remove()
+	    addFirst()
+	    addLast()
+	    remove()
 
 
     #####未完待续#########

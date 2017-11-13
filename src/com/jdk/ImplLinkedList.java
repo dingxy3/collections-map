@@ -1,4 +1,10 @@
 package com.jdk;
+
+import org.omg.CORBA.NO_IMPLEMENT;
+
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @author : dxy
  * @version : 创建时间：2017-11-8 
@@ -29,7 +35,33 @@ public class ImplLinkedList<E> {
 	public void add(E e){
 	
 	 //addlast(e);
-	  addFirst(e);
+	 addlast(e);
+	}
+	public void add(int index ,E e){
+
+		if (index == size){
+			Node<E> l =last ;
+			Node<E> x = new Node<E>(e,null,last) ;
+			if (l == null){
+				first = x ;
+				last = x ;
+			}else {
+				x = l.next ;
+				last = x ;
+			}
+		}else{
+          Node<E> x = node(index);
+          Node<E> prev = x.prev ;
+          Node<E> cur = new Node<E>(e,prev,x);
+          if (prev ==null){
+          	x.prev = cur ;
+          	first = cur ;
+		  }else {
+          	prev.next = cur ;
+            x.prev = cur ;
+		  }
+		}
+		size ++ ;
 	}
 	public int size(){	return size ; }
 	
@@ -47,6 +79,23 @@ public class ImplLinkedList<E> {
 				l = l.prev ;
 			}
 			return l.e;
+		}
+	}
+	//返回当前节点
+	public  Node<E> node(int index){
+
+		if (index<(size>>1)){//折半查找
+			Node<E> x = first ;
+			for (int i = 0 ; i<index ; i ++){
+                 x = x.next ;
+			}
+			return  x ;
+		}else {
+			Node<E> x = last ;
+			for (int i =size - 1 ; i > index ; i--){
+                x = x.prev ;
+			}
+			return x ;
 		}
 	}
 	public void addlast1(E e){
@@ -67,6 +116,7 @@ public class ImplLinkedList<E> {
 			last = newNode;
 			first = newNode;
 		}else{
+			//
 			last.next = newNode;
 			last = newNode ;
 		}
@@ -177,17 +227,25 @@ public class ImplLinkedList<E> {
 		link.add("2");
 		link.add("1");
 		link.add("3");
-		//link.addFirst("3");
-		//link.addFirst("4");
-		//link.addlast("5") ;
+		link.addlast("5") ;
+
+		link.add(1,"6");
 		
 		/*System.out.println(link.size());*/
 	    System.out.println("0::::::"+link.get(0));
 		System.out.println(link.get(1));
 		System.out.println(link.get(2));
-	
-		
-		
+		/*System.out.println(link.get(3));*/
+
+		List jdk = new LinkedList<>();
+		jdk.add("2");
+		jdk.add("1");
+		jdk.add("5");
+		jdk.add(2,"6");
+		System.out.println("jdk====="+jdk.get(0));
+		System.out.println(jdk.get(1));
+		System.out.println(jdk.get(2));
+		System.out.println(jdk.get(3));
 		
 		
 	}

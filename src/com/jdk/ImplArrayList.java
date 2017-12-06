@@ -154,7 +154,7 @@ public class ImplArrayList<E>implements RandomAccess,Cloneable,Serializable {
 	  
   }
   private void rangeCheck(int i){
-	  if(i > size || i < 0){
+	  if(i >= size || i < 0){
 		  throw new IndexOutOfBoundsException("index"+i+",ImplArraylist Size"+size);
 	  }
   }

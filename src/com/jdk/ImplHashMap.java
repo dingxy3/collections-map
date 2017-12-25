@@ -1,5 +1,6 @@
 package com.jdk;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -8,20 +9,20 @@ import java.util.Objects;
  */
 public class ImplHashMap {
 
-    static class Node<K,V> implements Map.Entry<K,V>{
-         int hash ;
-         V value ;
-         K key ;
-         Node<K,V> next ;
+    static class Node<K,V> implements Map.Entry<K,V> {
+        int hash;
+        V value;
+        K key;
+        Node<K, V> next;
 
 
-         Node(int hash, K key ,V value ,Node<K,V> next){
+        Node(int hash, K key, V value, Node<K, V> next) {
 
-             this.hash = hash ;
-             this.key = key ;
-             this.next = next ;
+            this.hash = hash;
+            this.key = key;
+            this.next = next;
 
-         }
+        }
 
         @Override
         public K getKey() {
@@ -39,12 +40,12 @@ public class ImplHashMap {
         }
 
         @Override
-        public final boolean equals(Object o){
+        public final boolean equals(Object o) {
             if (o == this) {
                 return true;
             }
             if (o instanceof Map.Entry) {
-                Map.Entry<?,?> e = (Map.Entry<?,?>)o;
+                Map.Entry<?, ?> e = (Map.Entry<?, ?>) o;
                 if (Objects.equals(key, e.getKey()) &&
                         Objects.equals(value, e.getValue())) {
                     return true;
@@ -52,6 +53,22 @@ public class ImplHashMap {
             }
             return false;
         }
-    }
 
+        transient ImplHashMap.Node<K, V>[] table;
+
+        //get方法
+        public V get(Object key) {
+            Node<K, V> e;
+
+            return null;
+        }
+
+        static final int hash(Object key) {
+            int h;
+            return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+        }
+    }
 }
+
+
+

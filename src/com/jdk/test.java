@@ -2,6 +2,7 @@ package com.jdk;
 
 import java.sql.SQLSyntaxErrorException;
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * Created by Administrator on 2017/12/18.
@@ -46,11 +47,20 @@ public class test {
         System.out.println(cur++); //0
         int next = 0 ;
         System.out.println(++next);//1*/
-        int[] arr = {1,2,3,4};
+    /*    int[] arr = {1,2,3,4};
         int[] arr1 = {5,6,7};
         System.arraycopy(arr,0,arr1,2,1);
         System.out.println(arr);
-        System.out.println(arr1);//{5,6,1}
+        System.out.println(arr1);//{5,6,1}*/
+        ImplArrayList list = new ImplArrayList<>();
+        list.add("1");
+        list.add("2") ;
+        list.add("3") ;
+        Iterator it = list.iterator();
+        while (it.hasNext()){
+            String a =  it.next().toString();
+            System.out.println(a);
+        }
 
     }
 }

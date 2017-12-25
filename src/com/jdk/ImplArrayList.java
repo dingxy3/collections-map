@@ -184,20 +184,23 @@ public class ImplArrayList<E>implements RandomAccess,Cloneable,Serializable {
 		  
 	  }
   }
-   private class ImplIterator<E>  {
+   private class ImplIterator  implements Iterator<E> {
 
   	  private  int cur = 0 ;
-  	  public  boolean hasNext(){
+  	  @Override
+	  public  boolean hasNext(){
   	  	return cur<size();
 	  }
-	  public Object next(){
-  	  	return elementData[cur++] ;
+	  @Override
+	  public E next(){
+  	  	return (E)elementData[cur++] ;
 	  }
+	  @Override
 	  public void remove(){
 	  	ImplArrayList.this.remove(--cur);
 	  }
    }
-    public ImplIterator<E> iterator() {
+    public Iterator<E> iterator() {
         return new ImplIterator();
     }
 

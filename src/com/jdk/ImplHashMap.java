@@ -1,13 +1,19 @@
 package com.jdk;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/11/14.
  */
-public class ImplHashMap {
+public class ImplHashMap<K,V>  extends AbstractMap<K,V>
+        implements Map<K,V>, Cloneable, Serializable {
+
+
+    @Override
+    public Set<Entry<K, V>> entrySet() {
+        return null;
+    }
 
     static class Node<K,V> implements Map.Entry<K,V> {
         int hash;
@@ -20,6 +26,7 @@ public class ImplHashMap {
 
             this.hash = hash;
             this.key = key;
+            this.value = value;
             this.next = next;
 
         }
@@ -36,7 +43,9 @@ public class ImplHashMap {
 
         @Override
         public V setValue(V value) {
-            return null;
+             V oldValue = value;
+             this.value= value;
+             return oldValue;
         }
 
         @Override
@@ -53,6 +62,23 @@ public class ImplHashMap {
             }
             return false;
         }
+        @Override
+        public final String toString(){return key+"="+value;}
+
+        @Override
+        public final int hashCode() {
+                  int keyHash = (key!=null?key.hashCode():0);
+                  int valueHash = (value!=null?value.hashCode():0);
+
+            return keyHash ^ keyHash;//取异或
+        }
+
+        static final int hash(Object key) {
+            int h;
+            //key.hashCode()低位 ；h >>> 16高位
+            return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+        }
+
 
         transient ImplHashMap.Node<K, V>[] table;
 
@@ -63,10 +89,7 @@ public class ImplHashMap {
             return null;
         }
 
-        static final int hash(Object key) {
-            int h;
-            return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
-        }
+
     }
 }
 

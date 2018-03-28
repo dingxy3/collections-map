@@ -12,21 +12,19 @@ import java.lang.reflect.Proxy;
  * @Description:
  * @Date: Created in  2018/3/28
  */
-public class TestDynamicProxy implements InvocationHandler  {
+public class TestDynamicProxy implements InvocationHandler{
 
-    private Object o;
+   private Object o;
 
-    public Object testDynamic(Object o,Class interfaces){
+   public Object testDynamic(Object o, Class interfaces) {
 
-
-       /* o = Proxy.newProxyInstance(o.getClass().getClassLoader(),new Class[]{o.getClass()},new InvocationHandler() {
+       /*  return Proxy.newProxyInstance(o.getClass().getClassLoader(), new Class[]{interfaces}, new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                return method.invoke(new XiaoyuMarry(),args);
+                return method.invoke(o, args);
             }
-        });
+        });*/
 
-        return o;*/
        this.o = o;
        return  Proxy.newProxyInstance(o.getClass().getClassLoader(),o.getClass().getInterfaces(),this);
     }
@@ -36,4 +34,4 @@ public class TestDynamicProxy implements InvocationHandler  {
 
         return method.invoke(o, args);
     }
-}
+    }

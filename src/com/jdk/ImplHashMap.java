@@ -2,6 +2,7 @@ package com.jdk;
 
 import java.io.Serializable;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by Administrator on 2017/11/14.
@@ -67,10 +68,11 @@ public class ImplHashMap<K,V>  extends AbstractMap<K,V>
 
         @Override
         public final int hashCode() {
-                  int keyHash = (key!=null?key.hashCode():0);
-                  int valueHash = (value!=null?value.hashCode():0);
 
-            return keyHash ^ keyHash;//取异或
+            int keyHash = (key!=null?key.hashCode():0);
+            int valueHash = (value!=null?value.hashCode():0);
+            return keyHash ^ valueHash;//取异或
+            ConcurrentHashMap
         }
 
         static final int hash(Object key) {
@@ -78,7 +80,6 @@ public class ImplHashMap<K,V>  extends AbstractMap<K,V>
             //key.hashCode()低位 ；h >>> 16高位
             return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
         }
-
 
         transient ImplHashMap.Node<K, V>[] table;
 

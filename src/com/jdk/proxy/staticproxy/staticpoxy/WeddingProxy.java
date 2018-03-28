@@ -1,4 +1,4 @@
-package com.jdk.proxy.staticproxy.serviceimpl;
+package com.jdk.proxy.staticproxy.staticpoxy;
 
 import com.jdk.proxy.staticproxy.service.Marry;
 

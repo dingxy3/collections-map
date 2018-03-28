@@ -1,7 +1,8 @@
 package com.jdk.proxy.staticproxy;
 
+import com.jdk.proxy.dynamicproxy.TestDynamicProxy;
 import com.jdk.proxy.staticproxy.service.Marry;
-import com.jdk.proxy.staticproxy.serviceimpl.WeddingProxy;
+import com.jdk.proxy.staticproxy.staticpoxy.WeddingProxy;
 import com.jdk.proxy.staticproxy.serviceimpl.XiaoyuMarry;
 
 /**
@@ -15,12 +16,15 @@ public class StaticProxy {
 
     public static void main(String[] args) {
 
-        //创建真实角色
+       /* //创建真实角色
         Marry xiaoyu = new XiaoyuMarry();
         //创建代理角色 +把真实角色赋给代理类角色
         Marry wed = new WeddingProxy(xiaoyu);
 
-        wed.marry();
+        wed.marry();*/
+        TestDynamicProxy test = new TestDynamicProxy();
+        Marry m = (Marry) test.testDynamic(new XiaoyuMarry(),Marry.class);
+        m.marry();
 
     }
 

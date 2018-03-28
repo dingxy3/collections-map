@@ -72,7 +72,6 @@ public class ImplHashMap<K,V>  extends AbstractMap<K,V>
             int keyHash = (key!=null?key.hashCode():0);
             int valueHash = (value!=null?value.hashCode():0);
             return keyHash ^ valueHash;//取异或
-            ConcurrentHashMap
         }
 
         static final int hash(Object key) {

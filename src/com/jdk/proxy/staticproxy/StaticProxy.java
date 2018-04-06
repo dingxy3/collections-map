@@ -22,8 +22,9 @@ public class StaticProxy {
         Marry wed = new WeddingProxy(xiaoyu);
 
         wed.marry();*/
-        TestDynamicProxy test = new TestDynamicProxy();
-        Marry m = (Marry) test.testDynamic(new XiaoyuMarry(),Marry.class);
+        Marry marry = new XiaoyuMarry();
+        TestDynamicProxy test = new TestDynamicProxy(marry);
+        Marry m = (Marry) test.testDynamic();
         m.marry();
 
     }

@@ -14,24 +14,22 @@ import java.lang.reflect.Proxy;
  */
 public class TestDynamicProxy implements InvocationHandler{
 
-   private Object o;
+   private Object target;
 
-   public Object testDynamic(Object o, Class interfaces) {
+    public TestDynamicProxy(Object target) {
+        super();
+        this.target = target;
+    }
 
-       /*  return Proxy.newProxyInstance(o.getClass().getClassLoader(), new Class[]{interfaces}, new InvocationHandler() {
-            @Override
-            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                return method.invoke(o, args);
-            }
-        });*/
+    public Object testDynamic() {
 
-       this.o = o;
-       return  Proxy.newProxyInstance(o.getClass().getClassLoader(),o.getClass().getInterfaces(),this);
+       return  Proxy.newProxyInstance(target.getClass().getClassLoader(),target.getClass().getInterfaces(),this);
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
-        return method.invoke(o, args);
+        return method.invoke(target, args);
+
     }
     }

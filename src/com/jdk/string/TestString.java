@@ -1,5 +1,8 @@
 package com.jdk.string;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @param
  * @Author: dingxy3
@@ -41,7 +44,8 @@ public class TestString {
     }
 
     /**
-     * false，false，true。
+     *true，因为final变量在编译后会直接替换成对应的值，
+     * 所以实际上等于s4=”a”+”bc”，而这种情况下，编译器会直接合并为s4=”abc”，所以最终s1==s4。
      */
     public static void test4(){
 
@@ -54,6 +58,9 @@ public class TestString {
 
     }
 
+    /**
+     * false，false，true。
+     */
     public  static  void  test5(){
 
         String s = new String("abc");
@@ -69,6 +76,12 @@ public class TestString {
         test2();
         test3();
         test4();
+       // test5();
+        List list =new ArrayList();
+        if (null != list && list.size()>0) {
+            list.get(0);
+        }
+
 
     }
 

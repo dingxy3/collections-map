@@ -52,7 +52,7 @@ public class test {
         System.arraycopy(arr,0,arr1,2,1);
         System.out.println(arr);
         System.out.println(arr1);//{5,6,1}*/
-        ImplArrayList list = new ImplArrayList<>();
+       /* ImplArrayList list = new ImplArrayList<>();
         list.add("1");
         list.add("2") ;
         list.add("3") ;
@@ -60,7 +60,14 @@ public class test {
         while (it.hasNext()){
             String a =  it.next().toString();
             System.out.println(a);
+        }*/
+
+       String info = "{\"DISCNT_CODE\":\"7113421\"\"DISCNT_CODE\":\"8292671\"}";
+       String [] arr = info.split("DISCNT_CODE");
+        for (String s : arr) {
+            
         }
+
 
     }
 }

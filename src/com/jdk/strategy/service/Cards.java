@@ -19,10 +19,12 @@ import java.util.concurrent.ConcurrentHashMap;
     public void init() {
         map.put(getType(),this);
     }
+
     @Override
     public void pay(int cents) {
         execute(cents);
     }
+
     protected abstract void execute(int cents);
 
     protected abstract String getType();
